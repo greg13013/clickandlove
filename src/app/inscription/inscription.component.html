@@ -1,0 +1,88 @@
+<form class="formInscription" (ngSubmit)="validerInscription(f)" #f="ngForm">
+<div class="row">
+  <div class="col-4">
+    <button type="button" class="btn btn-danger" (click)="etape(this.numEtape-1)">Retour</button>
+  </div>
+
+  <div class="col-4">
+
+    <div id="etape1" class="invisible">
+      Je suis :
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="homme" value="homme" ngModel>
+        <label class="form-check-label" for="homme">
+          Homme
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="femme" value="femme" ngModel>
+        <label class="form-check-label" for="femme">
+          Femme
+        </label>
+      </div>
+    </div>
+
+    <div id="etape2" class="invisible">
+      <div class="row">
+        <div class="col-4">
+          <select class="form-select" name="jour" aria-label="Default select example" ngModel>
+            <option selected>Jour</option>
+            <option *ngFor="let day of [].constructor(31); let i = index" value={{i+1}}>{{i+1}}</option>
+          </select>
+        </div>
+
+        <div class="col-4">
+          <select class="form-select" name="mois" aria-label="Default select example" ngModel>
+            <option selected>Mois</option>
+            <option *ngFor="let item of this.mois; let i = index" value={{item}}>{{item}}</option>
+          </select>
+        </div>
+
+        <div class="col-4">
+          <select class="form-select" name="annee" aria-label="Default select example" ngModel>
+            <option selected>Année</option>
+            <option *ngFor="let item of this.annee; let i = index" value={{item}}>{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="etape3" class="invisible">
+     <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" ngModel>
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email" ngModel>
+      <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Mot de passe" ngModel>
+    </div>
+
+  </div>
+
+  <div id="colButton" class="col-4">
+    <button id="submit" type="button" class="btn btn-primary" (click)="etape(this.numEtape+1)">Suivant</button>
+  </div>
+</div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Résumé inscription</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Résumé :
+        <p>Pseudo : {{formValider.pseudo}}</p>
+        <p>Mail : {{formValider.email}}</p>
+        <p>Genre : {{formValider.sexe}}</p>
+        <p>Date de naissance : {{formValider.jour}} / {{formValider.mois}} / {{formValider.annee}}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Continuer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
