@@ -9,5 +9,30 @@
 }
 
 .formInscription{
-  margin-top: 20px;
+  /*margin-top: 20px;*/
+  z-index: 7;
+}
+
+.overlay {
+    background-color: #030918;
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+
+.background {
+  z-index: -2;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
 }

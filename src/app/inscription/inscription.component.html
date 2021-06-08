@@ -1,6 +1,6 @@
 <form class="formInscription" (ngSubmit)="validerInscription(f)" #f="ngForm">
-<div class="row">
-  <div class="col-4">
+<div class="row text-white">
+  <div class="col-4 d-flex justify-content-end">
     <button *ngIf="numEtape >= 2" type="button" class="btn btn-danger" (click)="etape(this.numEtape-1)">Retour</button>
   </div>
 

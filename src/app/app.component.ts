@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import firebase from 'firebase';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ export class AppComponent {
   title = 'clickandlove';
   db: any;
 
-  constructor() {
+  constructor(private authService: AuthService) {
+
+    console.log(authService.isAuth)
     const config = {
       apiKey: "AIzaSyBoABOi2zE-GS63KeuRYt42uyAHzvicJz0",
       authDomain: "clickandlove-8e069.firebaseapp.com",
@@ -21,5 +24,8 @@ export class AppComponent {
     };
     let app = firebase.initializeApp(config);
    this.db = firebase.firestore(app);
+
+   //Initialise la déconnexion lors du rafraichissement
+    authService.signOutUser();
   }
 }
