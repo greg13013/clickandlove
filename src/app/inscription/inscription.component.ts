@@ -17,6 +17,7 @@ export class InscriptionComponent implements OnInit {
   mois = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
   annee : number[];
   formValider : any;
+  progress: number;
 
   constructor(private authService: AuthService, private router: Router, private utilisateurService: UtilisateurService) { }
 
@@ -29,11 +30,11 @@ export class InscriptionComponent implements OnInit {
 
   etape(numEtape: number){
     this.numEtape = numEtape;
-    if(this.numEtape >= 4){
-      this.numEtape = 3;
+    if(this.numEtape === 6){
+      this.numEtape = 5;
       document.getElementById('submit').setAttribute('type','submit');
     }
-    if(this.numEtape <= 0){
+    if(this.numEtape === 0){
       this.numEtape = 1;
     }
 
@@ -54,22 +55,48 @@ export class InscriptionComponent implements OnInit {
 
     console.log('etape : ',this.numEtape);
     if (this.numEtape === 1){
-      document.getElementById('etape1').className = 'etapeVisible';
+      document.getElementById('etape1').className = 'etapeVisible tailleText d-flex align-items-center flex-column';
       document.getElementById('etape2').className = 'etapeInvisible';
       document.getElementById('etape3').className = 'etapeInvisible';
+      document.getElementById('etape4').className = 'etapeInvisible';
+      document.getElementById('etape5').className = 'etapeInvisible';
+      this.progress = 18;
+
     }
     else if (this.numEtape === 2){
       console.log(this.mois);
       document.getElementById('etape1').className = 'etapeInvisible';
-      document.getElementById('etape2').className = 'etapeVisible';
+      document.getElementById('etape2').className = 'etapeVisible tailleText d-flex align-items-center flex-column';
       document.getElementById('etape3').className = 'etapeInvisible';
-      document.getElementById('submit').setAttribute('type','button');
+      document.getElementById('etape4').className = 'etapeInvisible';
+      document.getElementById('etape5').className = 'etapeInvisible';
+      this.progress = 36;
 
     }
     else if (this.numEtape === 3){
       document.getElementById('etape1').className = 'etapeInvisible';
       document.getElementById('etape2').className = 'etapeInvisible';
       document.getElementById('etape3').className = 'etapeVisible';
+      document.getElementById('etape4').className = 'etapeInvisible';
+      document.getElementById('etape5').className = 'etapeInvisible';
+      this.progress = 54;
+    }
+    else if (this.numEtape === 4){
+      document.getElementById('etape1').className = 'etapeInvisible';
+      document.getElementById('etape2').className = 'etapeInvisible';
+      document.getElementById('etape3').className = 'etapeInvisible';
+      document.getElementById('etape4').className = 'etapeVisible';
+      document.getElementById('etape5').className = 'etapeInvisible';
+      document.getElementById('submit').setAttribute('type','button');
+      this.progress = 72;
+    }
+    else if (this.numEtape === 5){
+      document.getElementById('etape1').className = 'etapeInvisible';
+      document.getElementById('etape2').className = 'etapeInvisible';
+      document.getElementById('etape3').className = 'etapeInvisible';
+      document.getElementById('etape4').className = 'etapeInvisible';
+      document.getElementById('etape5').className = 'etapeVisible';
+      this.progress = 90;
 
     }
   }

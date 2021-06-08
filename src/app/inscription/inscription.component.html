@@ -1,13 +1,21 @@
+
+<div class="row">
+  <div class="col-6 offset-5">
+    <label for="progress" class="text-white">File progress:</label><br>
+    <progress id="progress" max="100" value="{{progress}}"> {{progress}} </progress>
+  </div>
+</div>
+
 <form class="formInscription" (ngSubmit)="validerInscription(f)" #f="ngForm">
 <div class="row text-white">
-  <div class="col-4 d-flex justify-content-end">
-    <button *ngIf="numEtape >= 2" type="button" class="btn btn-danger" (click)="etape(this.numEtape-1)">Retour</button>
+  <div class="col-4 d-flex justify-content-end align-items-baseline">
+    <button *ngIf="numEtape >= 2" type="button" class="btn text-white tailleIcon far fa-arrow-alt-circle-left" (click)="etape(this.numEtape-1)"></button>
   </div>
 
   <div class="col-4">
 
     <div id="etape1" class="invisible">
-      Je suis :
+      Je suis un/une :
       <div class="form-check">
         <input class="form-check-input" type="radio" name="sexe" id="homme" value="homme" ngModel>
         <label class="form-check-label" for="homme">
@@ -20,26 +28,53 @@
           Femme
         </label>
       </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="couple" value="couple" ngModel>
+        <label class="form-check-label" for="couple">
+          Couple
+        </label>
+      </div>
+    </div>
+    <div id="etape2" class="invisible">
+      Je veux un/une :
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="chercheHomme" value="homme" ngModel>
+        <label class="form-check-label" for="homme">
+          Homme
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="chercheFemme" value="femme" ngModel>
+        <label class="form-check-label" for="femme">
+          Femme
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sexe" id="chercheCouple" value="couple" ngModel>
+        <label class="form-check-label" for="couple">
+          Couple
+        </label>
+      </div>
     </div>
 
-    <div id="etape2" class="invisible">
+    <div id="etape3" class="invisible">
       <div class="row">
         <div class="col-4">
-          <select class="form-select" name="jour" aria-label="Default select example" ngModel>
-            <option selected>Jour</option>
+          <select class="form-select backgroundTransparent" name="jour" aria-label="Default select example" ngModel>
+            <option value="Jour" selected>Jour</option>
             <option *ngFor="let day of [].constructor(31); let i = index" value={{i+1}}>{{i+1}}</option>
           </select>
         </div>
 
         <div class="col-4">
-          <select class="form-select" name="mois" aria-label="Default select example" ngModel>
+          <select class="form-select backgroundTransparent" name="mois" aria-label="Default select example" ngModel>
             <option selected>Mois</option>
             <option *ngFor="let item of this.mois; let i = index" value={{item}}>{{item}}</option>
           </select>
         </div>
 
         <div class="col-4">
-          <select class="form-select" name="annee" aria-label="Default select example" ngModel>
+          <select class="form-select backgroundTransparent" name="annee" aria-label="Default select example" ngModel>
             <option selected>Année</option>
             <option *ngFor="let item of this.annee; let i = index" value={{item}}>{{item}}</option>
           </select>
@@ -47,20 +82,29 @@
       </div>
     </div>
 
+    <div id="etape4" class="invisible">
+      <input type="text" class="form-control backgroundTransparent" name="localisation" id="localisation" placeholder="localisation" ngModel>
+   
+     </div>
+ 
 
-    <div id="etape3" class="invisible">
-     <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" ngModel>
-      <input type="email" class="form-control" name="email" id="email" placeholder="Email" ngModel>
-      <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Mot de passe" ngModel>
+    <div id="etape5" class="invisible">
+     <input type="text" class="form-control backgroundTransparent" name="pseudo" id="pseudo" placeholder="Pseudo" ngModel>
+      <input type="email" class="form-control backgroundTransparent" name="email" id="email" placeholder="Email" ngModel>
+      <input type="password" class="form-control backgroundTransparent" name="mdp" id="mdp" placeholder="Mot de passe" ngModel>
     </div>
+
 
   </div>
 
   <div id="colButton" class="col-4">
-    <button id="submit" type="button" class="btn btn-primary" (click)="etape(this.numEtape+1)">Suivant</button>
+    <button id="submit" type="button" class="btn text-white tailleIcon far fa-arrow-alt-circle-right" (click)="etape(this.numEtape+1)"></button>
   </div>
 </div>
 </form>
+
+
+
 
 <p class="text-danger">{{errorMessage}}</p>
 
