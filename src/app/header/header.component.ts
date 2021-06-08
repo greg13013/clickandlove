@@ -9,18 +9,22 @@ import firebase from 'firebase';
 })
 export class HeaderComponent implements OnInit {
 
-  isAuth: boolean;
+
 
   constructor(private authService: AuthService) { }
+
+  getAuthService(){
+    return this.authService;
+  }
 
   ngOnInit() {
 
     firebase.auth().onAuthStateChanged(
       (user) => {
         if(user) {
-          this.isAuth = true;
+          this.authService.isAuth = true;
         } else {
-          this.isAuth = false;
+          this.authService.isAuth = false;
         }
       }
     );

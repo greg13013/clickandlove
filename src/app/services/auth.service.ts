@@ -6,6 +6,8 @@ import firebase from 'firebase';
 })
 export class AuthService {
 
+  isAuth: boolean;
+
   constructor() { }
 
   createNewUser(email: string, password: string) {

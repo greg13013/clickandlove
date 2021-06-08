@@ -1,1 +1,6 @@
-<p *ngIf="user[0]">{{user[0].email}}</p>
+<p>Pseudo : {{this.getUtilisateurService().user.pseudo}}</p>
+<p>Email : {{this.getUtilisateurService().user.mail}}</p>
+<p>Mdp : {{this.getUtilisateurService().user.mdp}}</p>
+<p>Genre : {{this.getUtilisateurService().user.genre}}</p>
+<p>Date de naissance : {{this.getUtilisateurService().user.dtn}}</p>
+<p>Uid :  {{this.getUtilisateurService().user.uid}}</p>

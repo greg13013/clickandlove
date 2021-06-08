@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, NgForm} from "@angular/forms";
+import { NgForm} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 
@@ -9,13 +9,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  signupForm: FormGroup;
+
   errorMessage: string;
 
   constructor(private authService: AuthService,
               private router: Router) { }
 
   ngOnInit() {
+    if (this.authService.isAuth === true){
+      this.router.navigate(['/pageLike'])
+    }
 
   }
 

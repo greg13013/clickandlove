@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 import DataSnapshot = firebase.database.DataSnapshot;
+import {Utilisateur} from "../../models/utilisateur";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import DataSnapshot = firebase.database.DataSnapshot;
 export class UtilisateurService {
 
 
-  user : any;
+  user : Utilisateur;
   constructor() { }
 
   ajouterUtilisateur(user:any[]){
@@ -25,6 +26,19 @@ export class UtilisateurService {
             reject(error);
           }
         );
+      }
+    ).then(
+      (res) => {
+        this.user.uid = this.getUid();
+        this.user.pseudo = res[0].pseudo;
+        this.user.mail = res[0].email;
+        this.user.mdp = res[0].mdp;
+        this.user.dtn = res[0].jour + ' / ' + res[0].mois + ' / ' + res[0].annee;
+        this.user.genre = res[0].sexe;
+        console.log(res);
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }
