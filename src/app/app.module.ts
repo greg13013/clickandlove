@@ -8,10 +8,15 @@ import {RouterModule, Routes} from "@angular/router";
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {FormsModule} from "@angular/forms";
+import {AuthService} from "./services/auth.service";
+import {AuthGuardService} from "./services/auth-guard.service";
+import {HttpClientModule} from "@angular/common/http";
+import { PageLikeComponent } from './page-like/page-like.component';
 
 const appRoute: Routes = [
   { path: 'accueil', component: AccueilComponent },
   { path: '', component: AccueilComponent },
+  { path: 'pageLike', canActivate: [AuthGuardService], component: PageLikeComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'not-found', component: FourohfourComponent },
   { path: '**', redirectTo: 'not-found' }
@@ -23,14 +28,18 @@ const appRoute: Routes = [
     HeaderComponent,
     FourohfourComponent,
     AccueilComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    PageLikeComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoute),
     FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

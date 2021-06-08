@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
+import {UtilisateurService} from "../services/utilisateur.service";
 
 @Component({
   selector: 'app-inscription',
@@ -8,13 +11,14 @@ import {NgForm} from "@angular/forms";
 })
 export class InscriptionComponent implements OnInit {
 
+  errorMessage: string;
   numEtape: number;
   now = new Date();
   mois = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
   annee : number[];
   formValider : any;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router, private utilisateurService: UtilisateurService) { }
 
   ngOnInit(): void {
     this.formValider = [];
@@ -66,11 +70,6 @@ export class InscriptionComponent implements OnInit {
       document.getElementById('etape1').className = 'etapeInvisible';
       document.getElementById('etape2').className = 'etapeInvisible';
       document.getElementById('etape3').className = 'etapeVisible';
-      document.getElementById('colButton').innerHTML = `
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Valider
-          </button>
-          `;
 
     }
   }
@@ -78,6 +77,19 @@ export class InscriptionComponent implements OnInit {
   validerInscription(form: NgForm){
     this.formValider = form.value;
     console.log(form.value);
+    const email = form.value['email'];
+    const password = form.value['mdp'];
+
+    this.authService.createNewUser(email, password).then(
+      () => {
+        this.utilisateurService.ajouterUtilisateur([this.formValider])
+        this.router.navigate(['/pageLike']);
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    )
+
 
 
   }

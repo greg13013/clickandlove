@@ -1,1 +1,15 @@
-<p>accueil works!</p>
+<form class="formInscription" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="row">
+    <div class="col-6">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email" ngModel>
+        <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Mot de passe" ngModel>
+    </div>
+    <div id="colButton" class="col-6">
+      <button id="submit" type="submit" class="btn btn-primary">Connexion</button>
+    </div>
+  </div>
+</form>
+<p class="text-danger">{{errorMessage}}</p>
+
+
+
