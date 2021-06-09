@@ -1,18 +1,23 @@
-<app-header></app-header>
 <div class="loader tailleLoader" >
-  <span class="Lettre">C</span>
-  <span class="Lettre" >L</span>
-  <span class="Lettre" >I</span>
-  <span class="Lettre" >C</span>
-  <span class="Lettre" >K</span>
-  <span class="Lettre" >&</span>
-  <span class="Lettre" >L</span>
-  <span class="Lettre" >O</span>
-  <span class="Lettre" >V</span>
-  <span class="Lettre" >E</span>
+  <span class="lettre">C</span>
+  <span class="lettre" >L</span>
+  <span class="lettre" >I</span>
+  <span class="lettre" >C</span>
+  <span class="lettre" >K</span>
+  <span class="lettre" >&</span>
+  <span class="lettre" >L</span>
+  <span class="lettre" >O</span>
+  <span class="lettre" >V</span>
+  <span class="lettre" >E</span>
 </div>
+
+<app-header></app-header>
+
 <div class="overlay"></div>
-<img class="background" src="{{tabImage[numeroImage]}}">
+
+<img [className]="backgroundVisible" src="{{tabImage[0]}}">
+<img [className]="backgroundInvisible" src="{{tabImage[1]}}">
+
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>

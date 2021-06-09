@@ -11,13 +11,22 @@ export class AppComponent {
   title = 'clickandlove';
   db: any;
   tabImage = [
-    "assets/img/coeur-pourvoyeur-chaleur.jpg",
-    "assets/img/cachet.png"
+    "assets/img/background1.jpg",
+    "assets/img/background3.jpg",
   ];
+  backgroundVisible: string;
+  backgroundInvisible: string;
+
+  tabImageChoisis : any[];
   numeroImage : number;
 
   constructor(private authService: AuthService) {
     this.numeroImage = 0
+    this.tabImageChoisis = [];
+    this.backgroundVisible = "background";
+    this.backgroundInvisible = "backgroundArriere";
+    this.tabImageChoisis[0] = this.tabImage[0];
+    this.tabImageChoisis[1] = this.tabImage[1];
     console.log('isAuth : ',authService.isAuth)
     const config = {
       apiKey: "AIzaSyBoABOi2zE-GS63KeuRYt42uyAHzvicJz0",
@@ -33,20 +42,32 @@ export class AppComponent {
    //Initialise la déconnexion lors du rafraichissement
     authService.signOutUser();
 
-    //window.setInterval(this.defilementImage(this.numeroImage + 1), 5000);
-    setInterval(() => { this.defilementImage() }, 5000)
+    setInterval(() => { this.defilementImage(); }, 5000)
     console.log('num image : ', this.numeroImage);
   }
 
   defilementImage (){
 
+    if (this.backgroundVisible === 'background'){
+      this.backgroundVisible = 'backgroundArriere';
+      this.backgroundInvisible = 'background';
+    }
+    else {
+      this.backgroundVisible = 'background';
+      this.backgroundInvisible = 'backgroundArriere';
+    }
+
     this.numeroImage += 1;
     if (this.numeroImage >= this.tabImage.length){
       this.numeroImage = 0 ;
     }
-    console.log('defilement : ',this.numeroImage);
-    console.log('lenght tab image : ',this.tabImage.length);
-     //return this.tabImage[this.numeroImage];
+
+
+    // console.log('tabImageChosis', this.tabImageChoisis);
+    //
+    // console.log('numeroImage : ',this.numeroImage);
+    // console.log('lenght tab image : ',this.tabImage.length);
+    //return this.tabImage[this.numeroImage];
 
   }
 }
