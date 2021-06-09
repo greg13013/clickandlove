@@ -60,22 +60,22 @@
     <div id="etape3" class="invisible">
       <div class="row">
         <div class="col-4">
-          <select class="form-select backgroundTransparent" name="jour" aria-label="Default select example" ngModel>
-            <option value="Jour" selected>Jour</option>
+          <select class="form-select backgroundTransparent" name="jour" aria-label="Default select example" [ngModel]="tabHolder[0]" ngModel>
+            <option disabled selected>Jour</option>
             <option *ngFor="let day of [].constructor(31); let i = index" value={{i+1}}>{{i+1}}</option>
           </select>
         </div>
 
         <div class="col-4">
-          <select class="form-select backgroundTransparent" name="mois" aria-label="Default select example" ngModel>
-            <option selected>Mois</option>
+          <select class="form-select backgroundTransparent" name="mois" aria-label="Default select example" [ngModel]="tabHolder[1]" ngModel>
+            <option disabled selected>Mois</option>
             <option *ngFor="let item of this.mois; let i = index" value={{item}}>{{item}}</option>
           </select>
         </div>
 
         <div class="col-4">
-          <select class="form-select backgroundTransparent" name="annee" aria-label="Default select example" ngModel>
-            <option selected>Année</option>
+          <select class="form-select backgroundTransparent" name="annee" aria-label="Default select example" [ngModel]="tabHolder[2]" ngModel>
+            <option disabled selected>Annee</option>
             <option *ngFor="let item of this.annee; let i = index" value={{item}}>{{item}}</option>
           </select>
         </div>

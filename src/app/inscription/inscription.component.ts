@@ -18,10 +18,14 @@ export class InscriptionComponent implements OnInit {
   annee : number[];
   formValider : any;
   progress: number;
+  tabHolder: any[];
 
   constructor(private authService: AuthService, private router: Router, private utilisateurService: UtilisateurService) { }
 
   ngOnInit(): void {
+    this.tabHolder = [];
+    this.tabHolder.push('Jour', 'Mois', 'Annee');
+    console.log('tabholder : ', this.tabHolder)
     this.formValider = [];
     this.numEtape = 1;
     this.etape(this.numEtape);

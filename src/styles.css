@@ -22,7 +22,10 @@
 }
 
 footer{
-  z-index: 1 !important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -1 !important;
 }
 
 option{
@@ -35,7 +38,7 @@ input{
   margin-bottom: 20px !important;
 }
 progress[value] {
-  width: 250px;
+  /*width: 250px;*/
   height: 20px;
 }
 
