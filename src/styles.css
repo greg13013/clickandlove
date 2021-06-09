@@ -121,7 +121,7 @@ progress[value] {
   align-items: center;
   background-size: 100%;
   background-repeat: no-repeat;
-  z-index: 5;
+  z-index: 7;
   position: fixed;
   animation: loader 3s ease-in;
   transform: scale(0);

@@ -12,10 +12,11 @@ import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {HttpClientModule} from "@angular/common/http";
 import { PageLikeComponent } from './page-like/page-like.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoute: Routes = [
   { path: 'accueil', component: AccueilComponent },
-  { path: '', component: AccueilComponent },
+  { path: '', component: InscriptionComponent },
   { path: 'pageLike', canActivate: [AuthGuardService], component: PageLikeComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'not-found', component: FourohfourComponent },
@@ -29,7 +30,8 @@ const appRoute: Routes = [
     FourohfourComponent,
     AccueilComponent,
     InscriptionComponent,
-    PageLikeComponent
+    PageLikeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
