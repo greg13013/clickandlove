@@ -10,10 +10,15 @@ import {AuthService} from "./services/auth.service";
 export class AppComponent {
   title = 'clickandlove';
   db: any;
+  tabImage = [
+    "assets/img/coeur-pourvoyeur-chaleur.jpg",
+    "assets/img/cachet.png"
+  ];
+  numeroImage : number;
 
   constructor(private authService: AuthService) {
-
-    console.log(authService.isAuth)
+    this.numeroImage = 0
+    console.log('isAuth : ',authService.isAuth)
     const config = {
       apiKey: "AIzaSyBoABOi2zE-GS63KeuRYt42uyAHzvicJz0",
       authDomain: "clickandlove-8e069.firebaseapp.com",
@@ -27,5 +32,21 @@ export class AppComponent {
 
    //Initialise la déconnexion lors du rafraichissement
     authService.signOutUser();
+
+    //window.setInterval(this.defilementImage(this.numeroImage + 1), 5000);
+    setInterval(() => { this.defilementImage() }, 5000)
+    console.log('num image : ', this.numeroImage);
+  }
+
+  defilementImage (){
+
+    this.numeroImage += 1;
+    if (this.numeroImage >= this.tabImage.length){
+      this.numeroImage = 0 ;
+    }
+    console.log('defilement : ',this.numeroImage);
+    console.log('lenght tab image : ',this.tabImage.length);
+     //return this.tabImage[this.numeroImage];
+
   }
 }
