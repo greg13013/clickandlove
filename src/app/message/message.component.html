@@ -1,0 +1,10 @@
+<div id="messageChat">
+  <p *ngFor="let item of message">
+    {{item['pseudo']}}<br>
+    {{item['message']}}
+  </p>
+</div>
+<form (ngSubmit)="ajoutMessage(f)" #f="ngForm">
+<input type="text" class="form-control" name="message" id="message" placeholder="Entrez votre message" ngModel>
+  <button id="submit" type="submit" class="btn btn-primary text-white">Envoyer</button>
+</form>

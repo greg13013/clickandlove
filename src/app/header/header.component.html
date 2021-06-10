@@ -5,10 +5,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul *ngIf="!getAuthService().isAuth" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" routerLinkActive="active">
-          <a *ngIf="!getAuthService().isAuth" class="nav-link active" aria-current="page" routerLink="inscription">Accueil</a>
-          <a *ngIf="getAuthService().isAuth" class="nav-link active" aria-current="page" routerLink="pageLike">Accueil</a>
+          <a  class="nav-link active" aria-current="page" routerLink="inscription">Accueil</a>
+        </li>
+      </ul>
+      <ul *ngIf="getAuthService().isAuth" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link active" aria-current="page" routerLink="pageLike">Accueil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link active" aria-current="page" routerLink="message">Message</a>
         </li>
       </ul>
         <ul class="navbar-nav">

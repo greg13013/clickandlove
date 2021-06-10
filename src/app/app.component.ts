@@ -40,9 +40,9 @@ export class AppComponent {
    this.db = firebase.firestore(app);
 
    //Initialise la déconnexion lors du rafraichissement
-    authService.signOutUser();
+    //authService.signOutUser();
 
-    setInterval(() => { this.defilementImage(); }, 5000)
+    setInterval(() => { this.defilementImage(); }, 8000)
     console.log('num image : ', this.numeroImage);
   }
 

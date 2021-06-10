@@ -25,7 +25,6 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
     this.tabHolder = [];
     this.tabHolder.push('Jour', 'Mois', 'Annee');
-    console.log('tabholder : ', this.tabHolder)
     this.formValider = [];
     this.numEtape = 1;
     this.etape(this.numEtape);
